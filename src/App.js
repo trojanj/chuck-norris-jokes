@@ -1,11 +1,27 @@
 import React from 'react';
-import './App.css';
+import cls from './App.module.css';
+import ChooseJoke from './components/JokeChoice/JokeChoice';
+import JokeCard from './components/JokeCard/JokeCard';
+import Sidebar from './components/Sidebar/Sidebar';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-
-    </div>
+    <>
+      <main className={cls.main}>
+        <div className={cls.wrapper}>
+          <p className={cls.taskLabel}>MSI 2020</p>
+          <section className={cls.chooseJokeSection}>
+            <h1 className={cls.title}>Hey!</h1>
+            <h2 className={cls.subtitle}>Let’s try to find a joke for you:</h2>
+            <ChooseJoke />
+          </section>
+          <section className="jokeCardsSection">
+            <JokeCard />
+          </section>
+        </div>
+      </main>
+      <Sidebar />
+    </>
   );
 }
 

@@ -1,0 +1,101 @@
+.JokeCard {
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.SidebarJokeCard {
+  background: white;
+  padding: 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #F8F8F8;
+}
+
+.MainJokeCard {
+  background: #F8F8F8;
+  padding: 40px;
+}
+
+.SidebarJokeCard .jokeText {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.heartIcon {
+  text-align: right;
+  line-height: 17px;
+}
+
+.heartIcon img {
+  cursor: pointer;
+}
+
+.content {
+  padding-left: 60px;
+  position: relative;
+}
+
+.MainJokeCard .content::before {
+  background-color: white;
+}
+
+.SidebarJokeCard .content::before {
+  background-color: #F8F8F8;
+}
+
+.content::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  background: url("../../icons/message-icon.svg") no-repeat center;
+}
+
+.linkId {
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 14px;
+  color: #ABABAB;
+  margin-bottom: 5px;
+}
+
+.linkId a {
+  color: #8EA7FF;
+}
+
+.linkId a img {
+  margin-left: 5px;
+}
+
+.jokeText {
+  max-width: 540px;
+}
+
+.MainJokeCard .jokeText {
+  margin-bottom: 23px;
+}
+
+.SidebarJokeCard .jokeText {
+  margin-bottom: 20px;
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 14px;
+  color: #ABABAB;
+}
+
+.MainJokeCard .details div {
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #333333;
+  padding: 6px 20px;
+  background: white;
+}
+

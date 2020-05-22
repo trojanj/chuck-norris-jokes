@@ -1,0 +1,17 @@
+.Sidebar {
+  min-height: 100vh;
+  max-width: 480px;
+  background: #F8F8F8;
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 40px;
+}
+
+.Sidebar h3 {
+  margin-bottom: 20px;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 28px;
+  color: #ABABAB;
+}
