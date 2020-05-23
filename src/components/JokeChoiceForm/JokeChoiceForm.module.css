@@ -1,4 +1,4 @@
-.JokeChoice label {
+.JokeChoiceForm label {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -10,11 +10,11 @@
   position: relative;
 }
 
-.JokeChoice label:last-of-type {
+.JokeChoiceForm label:last-of-type {
   margin-bottom: 20px;
 }
 
-.JokeChoice label input {
+.JokeChoiceForm label input {
   opacity: 0;
   position: absolute;
   left: 50%;
@@ -23,7 +23,7 @@
   z-index: -1;
 }
 
-.JokeChoice label .design {
+.JokeChoiceForm label .design {
   width: 20px;
   height: 20px;
   border: 2px solid #ABABAB;
@@ -32,7 +32,7 @@
   position: relative;
 }
 
-.JokeChoice label .design::before {
+.JokeChoiceForm label .design::before {
   content: "";
   display: block;
   width: 10px;
@@ -44,17 +44,17 @@
   transform: translate(-50%, -50%) scale(0);
 }
 
-.JokeChoice label .design:before {
+.JokeChoiceForm label .design:before {
   background: #333333;
   opacity: 0;
   transition: .3s;
 }
 
-.JokeChoice label input:checked + .design {
+.JokeChoiceForm label input:checked + .design {
   border: 2px solid #333333;
 }
 
-.JokeChoice label input:checked + .design::before {
+.JokeChoiceForm label input:checked + .design::before {
   opacity: 1;
   transform: translate(-50%, -50%) scale(1);
 }
@@ -114,6 +114,7 @@
   padding: 10px 40px;
   border: none;
   cursor: pointer;
+  outline: none;
 }
 
 .btn:hover, .btn:focus {

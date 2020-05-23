@@ -1,0 +1,1 @@
+export const GET_RANDOM_JOKE = 'GET_RANDOM_JOKE';

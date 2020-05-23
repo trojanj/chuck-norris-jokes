@@ -3,9 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import AppState from './context/AppState';
+
+const app = (
+  <AppState>
+    <App/>
+  </AppState>
+)
 
 ReactDOM.render(
-  <App />,
+  app,
   document.getElementById('root')
 );
 
