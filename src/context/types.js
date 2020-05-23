@@ -1,1 +1,5 @@
 export const GET_RANDOM_JOKE = 'GET_RANDOM_JOKE';
+export const GET_CATEGORIES = 'GET_CATEGORIES';
+export const GET_CATEGORY_JOKE = 'GET_CATEGORY_JOKE';
+export const GET_SEARCH_JOKE = 'GET_SEARCH_JOKE';
+export const SET_LOADING = 'SET_LOADING';

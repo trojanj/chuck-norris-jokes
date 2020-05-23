@@ -25,13 +25,14 @@ export default props => {
         </small>
         <p className={cls.jokeText}>{value}</p>
 
-        {sidebarJokeCard
+        {
+          sidebarJokeCard
           ? <div className={cls.details}>
               <small>Last update: {hoursAgo} hours ago</small>
             </div>
           : <div className={cls.details}>
               <small>Last update: {hoursAgo} hours ago</small>
-              {categories.map(category => <div>{category}</div>)}
+              {categories[0] && <div>{categories}</div>}
             </div>
         }
       </div>

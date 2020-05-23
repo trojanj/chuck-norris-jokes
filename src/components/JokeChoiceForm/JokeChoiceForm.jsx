@@ -3,20 +3,22 @@ import cls from './JokeChoiceForm.module.css';
 import {AppContext} from '../../context/AppContext';
 
 export default () => {
-  const [selectedOption, setSelectedOption] = useState('random');
+  const [selectedOption, setOption] = useState('random');
+  const [selectedCategory, setCategory] = useState('');
+  const [query, setQuery] = useState('');
 
-  const {getRandomJoke} = useContext(AppContext);
+  const {state, getRandomJoke, getCategoryJoke, getSearchJoke} = useContext(AppContext);
 
   const handleOptionChange = event => {
     switch (event.target.value) {
       case "random":
-        setSelectedOption("random");
+        setOption("random");
         break;
       case "fromCategory":
-        setSelectedOption("fromCategory");
+        setOption("fromCategory");
         break;
       case "search":
-        setSelectedOption("search");
+        setOption("search");
         break;
     }
   }
@@ -25,17 +27,46 @@ export default () => {
     event.preventDefault()
   }
 
-  const handleButtonSubmit = async () => {
+  const handleButtonSubmit = () => {
     switch (selectedOption) {
       case "random":
         getRandomJoke();
         break;
-      // case "fromCategory":
-      //   const categoryJoke = await axios.get(`/jokes/random?category=${category}`);
-      //   break;
-      // case "search":
-      //   const searchJokes = await axios.get(`https://api.chucknorris.io/jokes/search?query=${query}`);
-      //   break;
+      case "fromCategory":
+        selectedCategory && getCategoryJoke(selectedCategory);
+        break;
+      case "search":
+        query && getSearchJoke(query);
+        break;
+    }
+  }
+
+  const handleCategoryClick = event => {
+    const li = event.target.closest('li');
+    const ul = document.querySelector(`.${cls.jokeCategories}`);
+
+    if (li && ul.contains(li)) {
+      if (selectedCategory && li.innerText.toLowerCase() !== selectedCategory) {
+        ul.querySelector(`.${cls.active}`).classList.remove(cls.active);
+      }
+
+      if (selectedCategory && li.innerText.toLowerCase() === selectedCategory) {
+        li.classList.remove(cls.active);
+        setCategory('');
+        return
+      }
+      li.classList.toggle(cls.active);
+      setCategory(event.target.innerText.toLowerCase());
+    }
+  }
+
+  const handleSearchQuery = event => {
+    setQuery(event.target.value)
+  }
+
+  const handleSearchKeyPress = event => {
+    if (event.key === 'Enter' && query) {
+      getSearchJoke(query);
     }
   }
 
@@ -64,12 +95,16 @@ export default () => {
         <span>From categories</span>
       </label>
       {
-        selectedOption === "fromCategory" && <ul className={cls.jokeCategories}>
-          <li className={cls.jokeCategory}>animal</li>
-          <li className={cls.jokeCategory}>career</li>
-          <li className={cls.jokeCategory}>celebrity</li>
-          <li className={cls.jokeCategory}>dev</li>
-        </ul>
+        selectedOption === "fromCategory" && (
+          <ul className={cls.jokeCategories} onClick={handleCategoryClick}>
+            {state.categories.map((category, ind) => {
+              return <li
+                key={ind}
+                className={cls.jokeCategory}
+              >{category}</li>
+            })}
+          </ul>
+        )
       }
       <label>
         <input
@@ -87,6 +122,9 @@ export default () => {
           type="search"
           placeholder="Free text search..."
           className={cls.search}
+          value={query}
+          onChange={handleSearchQuery}
+          onKeyDown={handleSearchKeyPress}
         />
       }
       <button

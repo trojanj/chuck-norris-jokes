@@ -20,7 +20,8 @@ const App = () => {
             <JokeChoiceForm />
           </section>
           <section className={cls.jokeCardsSection}>
-            {jokes.slice().reverse().map(joke => {
+            {state.loading && <Loader />}
+            {jokes.slice().reverse().slice(0, 20).map(joke => {
               return <JokeCard
                 key={joke.id}
                 categories={joke.categories}
