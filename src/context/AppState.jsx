@@ -2,7 +2,7 @@ import React, {useEffect, useReducer} from 'react';
 import {AppContext} from './AppContext';
 import {appReducer} from './appReducer';
 import axios from '../axios/axios-jokes';
-import {GET_CATEGORIES, GET_CATEGORY_JOKE, GET_RANDOM_JOKE, GET_SEARCH_JOKE} from './types';
+import {GET_CATEGORIES, GET_CATEGORY_JOKE, GET_RANDOM_JOKE, GET_SEARCH_JOKE, SET_LOADING} from './types';
 
 const msInOneHour = 36e5;
 
@@ -29,19 +29,26 @@ export default ({children}) => {
     dispatch({type: GET_CATEGORIES, payload: response.data})
   }
 
+  const setLoading = () => {
+    dispatch({type: SET_LOADING})
+  }
+
   const getRandomJoke = async () => {
+    setLoading();
     const response = await axios.get('/jokes/random');
     response.data.hoursAgo = countHoursAgo(response.data.updated_at);
     dispatch({type: GET_RANDOM_JOKE, payload: response.data})
   }
 
   const getCategoryJoke = async (category) => {
+    setLoading();
     const response = await axios.get(`/jokes/random?category=${category}`);
     response.data.hoursAgo = countHoursAgo(response.data.updated_at);
     dispatch({type: GET_CATEGORY_JOKE, payload: response.data})
   }
 
   const getSearchJoke = async (query) => {
+    setLoading();
     const response = await axios.get(`https://api.chucknorris.io/jokes/search?query=${query}`);
     response.data.result.forEach(joke => joke.hoursAgo = countHoursAgo(joke.updated_at));
     dispatch({type: GET_SEARCH_JOKE, payload: response.data.result})

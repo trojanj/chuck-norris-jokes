@@ -3,8 +3,8 @@ import cls from './JokeChoiceForm.module.css';
 import {AppContext} from '../../context/AppContext';
 
 export default () => {
-  const [selectedOption, setOption] = useState('random');
-  const [selectedCategory, setCategory] = useState('');
+  const [selectedOption, setSelectedOption] = useState('random');
+  const [selectedCategory, setSelectedCategory] = useState('');
   const [query, setQuery] = useState('');
 
   const {state, getRandomJoke, getCategoryJoke, getSearchJoke} = useContext(AppContext);
@@ -12,13 +12,15 @@ export default () => {
   const handleOptionChange = event => {
     switch (event.target.value) {
       case "random":
-        setOption("random");
+        setSelectedOption("random");
         break;
       case "fromCategory":
-        setOption("fromCategory");
+        selectedCategory && setSelectedCategory('');
+        setSelectedOption("fromCategory");
         break;
       case "search":
-        setOption("search");
+        query && setQuery('');
+        setSelectedOption("search");
         break;
     }
   }
@@ -52,19 +54,19 @@ export default () => {
 
       if (selectedCategory && li.innerText.toLowerCase() === selectedCategory) {
         li.classList.remove(cls.active);
-        setCategory('');
+        setSelectedCategory('');
         return
       }
       li.classList.toggle(cls.active);
-      setCategory(event.target.innerText.toLowerCase());
+      setSelectedCategory(event.target.innerText.toLowerCase());
     }
   }
 
-  const handleSearchQuery = event => {
+  const handleSearchChange = event => {
     setQuery(event.target.value)
   }
 
-  const handleSearchKeyPress = event => {
+  const handleSearchKeyDown = event => {
     if (event.key === 'Enter' && query) {
       getSearchJoke(query);
     }
@@ -123,8 +125,8 @@ export default () => {
           placeholder="Free text search..."
           className={cls.search}
           value={query}
-          onChange={handleSearchQuery}
-          onKeyDown={handleSearchKeyPress}
+          onChange={handleSearchChange}
+          onKeyDown={handleSearchKeyDown}
         />
       }
       <button

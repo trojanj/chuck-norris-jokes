@@ -4,6 +4,7 @@ import JokeChoiceForm from './components/JokeChoiceForm/JokeChoiceForm';
 import JokeCard from './components/JokeCard/JokeCard';
 import Sidebar from './components/Sidebar/Sidebar';
 import {AppContext} from './context/AppContext';
+import Loader from './components/UI/Loader';
 
 const App = () => {
   const {state} = useContext(AppContext);
@@ -20,7 +21,7 @@ const App = () => {
             <JokeChoiceForm />
           </section>
           <section className={cls.jokeCardsSection}>
-            {state.loading && <Loader />}
+            {state.loading && <div className={cls.alignCenter}><Loader /></div>}
             {jokes.slice().reverse().slice(0, 20).map(joke => {
               return <JokeCard
                 key={joke.id}
