@@ -4,13 +4,10 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import AppState from './context/app/AppState';
-import FavouriteState from './context/favourite/FavouriteState';
 
 const app = (
   <AppState>
-    <FavouriteState>
-      <App/>
-    </FavouriteState>
+    <App/>
   </AppState>
 )
 

@@ -1,11 +1,15 @@
+.App {
+  display: flex;
+}
+
 .main {
   max-width: 960px;
-  margin-right: 480px;
+  width: 66.666666%;
 }
 
 .wrapper {
   max-width: 680px;
-  margin: 40px auto;
+  margin: 40px 140px;
 }
 
 .task {
@@ -38,4 +42,16 @@
 
 .alignCenter {
   text-align: center;
+}
+
+@media (max-width: 1199px) {
+  .wrapper {
+    margin: 60px;
+  }
+}
+
+@media (max-width: 991px) {
+  .wrapper {
+    margin: 20px;
+  }
 }

@@ -1,25 +1,23 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import cls from './JokeCard.module.css';
 import heartIcon from '../../icons/heart-icon.svg';
 import filledHeartIcon from '../../icons/filled-heart-icon.svg';
 import linkIcon from '../../icons/link-icon.svg';
-import {FavouriteContext} from '../../context/favourite/FavouriteContext';
 
 export default props => {
   const {categories, id, hoursAgo, value} = props.joke;
-  const {state, addFavouriteJoke, removeFavouriteJoke} = useContext(FavouriteContext);
 
   const classes = [cls.JokeCard];
   props.isFavourite ? classes.push(cls.FavouriteJokeCard) : classes.push(cls.MainJokeCard);
 
-  const srcHeart = props.isFavourite || state.favouriteJokes.find(joke => joke === props.joke) ? filledHeartIcon : heartIcon;
+  const srcHeart = props.isFavourite || props.state.favouriteJokes.find(joke => joke === props.joke) ? filledHeartIcon : heartIcon;
 
   const handleFavouriteClick = () => {
-    if (state.favouriteJokes.find(joke => joke === props.joke)) {
-      removeFavouriteJoke(id);
+    if (props.isFavourite || props.state.favouriteJokes.find(joke => joke === props.joke)) {
+      props.removeFavouriteJoke(id);
       return;
     }
-    addFavouriteJoke(props.joke);
+    props.addFavouriteJoke(props.joke);
   }
 
   return (

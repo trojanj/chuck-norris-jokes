@@ -1,13 +1,10 @@
-import React, {useContext, useState} from 'react';
+import React, {useState} from 'react';
 import cls from './JokeChoiceForm.module.css';
-import {AppContext} from '../../context/app/AppContext';
 
-export default () => {
+export default ({state, getRandomJoke, getCategoryJoke, getSearchJoke}) => {
   const [selectedOption, setSelectedOption] = useState('random');
   const [selectedCategory, setSelectedCategory] = useState('');
   const [query, setQuery] = useState('');
-
-  const {state, getRandomJoke, getCategoryJoke, getSearchJoke} = useContext(AppContext);
 
   const handleOptionChange = event => {
     switch (event.target.value) {
