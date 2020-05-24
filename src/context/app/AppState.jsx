@@ -84,7 +84,10 @@ export default ({children}) => {
   }
 
   return (
-    <AppContext.Provider value={{state, getRandomJoke, getCategoryJoke, getSearchJoke, addFavouriteJoke, removeFavouriteJoke}}>
+    <AppContext.Provider value={{
+      state, getRandomJoke, getCategoryJoke,
+      getSearchJoke, addFavouriteJoke, removeFavouriteJoke
+    }}>
       {children}
     </AppContext.Provider>
   )

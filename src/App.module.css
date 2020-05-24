@@ -1,5 +1,6 @@
 .App {
   display: flex;
+  position: relative;
 }
 
 .main {
@@ -10,6 +11,29 @@
 .wrapper {
   max-width: 680px;
   margin: 40px 140px;
+}
+
+.favourite {
+  display: none;
+}
+
+.favourite span {
+  width: 28px;
+  height: 28px;
+  background: #333333;
+  border-radius: 100%;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.favourite h3 {
+  display: inline-block;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 28px;
+  color: #ABABAB;
 }
 
 .task {
@@ -52,6 +76,37 @@
 
 @media (max-width: 991px) {
   .wrapper {
+    margin: 20px 40px;
+  }
+}
+
+@media (max-width: 834px) {
+  .wrapper {
+    margin: 40px;
+    max-width: 754px;
+  }
+
+  .favourite {
+    display: flex;
+    align-items: center;
+    z-index: 52;
+    position: absolute;
+    top: 40px;
+    right: 40px;
+  }
+
+  .main {
+    width: 100%;
+  }
+}
+
+@media (max-width: 380px) {
+  .wrapper {
     margin: 20px;
+    max-width: 380px;
+  }
+  .favourite {
+    top: 20px;
+    right: 20px;
   }
 }
