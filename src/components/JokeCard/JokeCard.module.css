@@ -3,7 +3,7 @@
   margin-bottom: 20px;
 }
 
-.SidebarJokeCard {
+.FavouriteJokeCard {
   background: white;
   padding: 20px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
@@ -15,7 +15,7 @@
   padding: 40px;
 }
 
-.SidebarJokeCard .jokeText {
+.FavouriteJokeCard .jokeText {
   font-size: 14px;
   line-height: 20px;
 }
@@ -38,7 +38,7 @@
   background-color: white;
 }
 
-.SidebarJokeCard .content::before {
+.FavouriteJokeCard .content::before {
   background-color: #F8F8F8;
 }
 
@@ -77,7 +77,7 @@
   margin-bottom: 23px;
 }
 
-.SidebarJokeCard .jokeText {
+.FavouriteJokeCard .jokeText {
   margin-bottom: 20px;
 }
 
@@ -91,11 +91,19 @@
   color: #ABABAB;
 }
 
-.MainJokeCard .details div {
+.details div {
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: #333333;
   padding: 6px 20px;
+}
+
+.MainJokeCard .details div {
   background: white;
+  color: #333333;
+}
+
+.FavouriteJokeCard .details div {
+  background: #F8F8F8;
+  color: #333333;
 }
 

@@ -1,4 +1,4 @@
-import {GET_CATEGORIES, GET_CATEGORY_JOKE, GET_RANDOM_JOKE, GET_SEARCH_JOKE, SET_LOADING} from './types';
+import {GET_CATEGORIES, GET_CATEGORY_JOKE, GET_RANDOM_JOKE, GET_SEARCH_JOKE, SET_LOADING} from '../types';
 
 const handlers = {
   [GET_CATEGORIES]: (state, {payload}) => ({...state, categories: payload}),

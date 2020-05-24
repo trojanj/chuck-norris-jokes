@@ -1,8 +1,8 @@
 import React, {useEffect, useReducer} from 'react';
 import {AppContext} from './AppContext';
 import {appReducer} from './appReducer';
-import axios from '../axios/axios-jokes';
-import {GET_CATEGORIES, GET_CATEGORY_JOKE, GET_RANDOM_JOKE, GET_SEARCH_JOKE, SET_LOADING} from './types';
+import axios from '../../axios/axios-jokes';
+import {GET_CATEGORIES, GET_CATEGORY_JOKE, GET_RANDOM_JOKE, GET_SEARCH_JOKE, SET_LOADING} from '../types';
 
 const msInOneHour = 36e5;
 
@@ -55,7 +55,7 @@ export default ({children}) => {
   }
 
   return (
-    <AppContext.Provider value={{state, dispatch, getRandomJoke, getCategoryJoke, getSearchJoke}}>
+    <AppContext.Provider value={{state, getRandomJoke, getCategoryJoke, getSearchJoke}}>
       {children}
     </AppContext.Provider>
   )

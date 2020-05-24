@@ -1,6 +1,6 @@
 import React, {useContext, useState} from 'react';
 import cls from './JokeChoiceForm.module.css';
-import {AppContext} from '../../context/AppContext';
+import {AppContext} from '../../context/app/AppContext';
 
 export default () => {
   const [selectedOption, setSelectedOption] = useState('random');
